@@ -74,7 +74,7 @@ public class DBController  extends SQLiteOpenHelper {
 	public String composeJSONfromSQLite(){
 		ArrayList<HashMap<String, String>> wordList;
 		wordList = new ArrayList<HashMap<String, String>>();
-		String selectQuery = "SELECT  * FROM users where udpateStatus = '"+"no"+"'";
+		String selectQuery = "SELECT  * FROM users where updateStatus = '"+"no"+"'";
 	    SQLiteDatabase database = this.getWritableDatabase();
 	    Cursor cursor = database.rawQuery(selectQuery, null);
 	    if (cursor.moveToFirst()) {
@@ -111,7 +111,7 @@ public class DBController  extends SQLiteOpenHelper {
 	 */
 	public int dbSyncCount(){
 		int count = 0;
-		String selectQuery = "SELECT  * FROM users where udpateStatus = '"+"no"+"'";
+		String selectQuery = "SELECT  * FROM users where updateStatus = '"+"no"+"'";
 	    SQLiteDatabase database = this.getWritableDatabase();
 	    Cursor cursor = database.rawQuery(selectQuery, null);
 	    count = cursor.getCount();
@@ -126,7 +126,7 @@ public class DBController  extends SQLiteOpenHelper {
 	 */
 	public void updateSyncStatus(String id, String status){
 		SQLiteDatabase database = this.getWritableDatabase();	 
-		String updateQuery = "Update users set udpateStatus = '"+ status +"' where userId="+"'"+ id +"'";
+		String updateQuery = "Update users set updateStatus = '"+ status +"' where userId="+"'"+ id +"'";
 		Log.d("query",updateQuery);		
 		database.execSQL(updateQuery);
 		database.close();
